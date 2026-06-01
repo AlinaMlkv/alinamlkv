@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Алина Молокова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #131212;
+    --text: #d9d3e3;
+    --muted: #95909c;
+    --accent: #735aed;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── PRELOADER ── */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    animation: preloader-out 0.8s ease forwards 2.5s;
+  }
+
+  #preloader-logo {
+    width: min(224px, 38vw);
+    opacity: 0;
+    animation: fade-in 1s ease forwards 0.4s;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes preloader-out {
+    from { opacity: 1; pointer-events: all; }
+    to   { opacity: 0; pointer-events: none; }
+  }
+
+  /* ── MAIN ── */
+  #main {
+    opacity: 0;
+    animation: fade-in 1s ease forwards 3.4s;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* gradient glow — точно из Figma */
+  #main::before {
+    content: '';
+    position: fixed;
+    left: -257px;
+    top: -5px;
+    width: 514px;
+    height: 928px;
+    border-radius: 928px;
+    background: radial-gradient(50% 50% at 50% 50%, #312087 0%, rgba(19,18,18,0.00) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 28px 48px;
+    z-index: 10;
+  }
+
+  .nav-znak svg {
+    width: 20px;
+    height: auto;
+  }
+
+  .nav-title {
+    font-size: 11px;
+    color: var(--accent);
+    text-align: right;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    padding: 0 64px;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .col-left {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .col-right {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── LOGO ── */
+  .logo-wrap svg {
+    width: min(260px, 38vw);
+    height: auto;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .services span {
+    font-size: 22px;
+    color: #DAD3E4;
+    font-weight: 300;
+    line-height: normal;
+  }
+
+  /* ── HEADLINE ── */
+  .headline {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: normal;
+    color: #DAD3E4;
+  }
+
+  /* ── BIO ── */
+  .bio {
+    font-size: 16px;
+    color: #DAD3E4;
+    line-height: normal;
+    font-weight: 300;
+    margin-top: 24px;
+  }
+
+  /* ── CONTACTS ── */
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 56px;
+  }
+
+  .contacts a {
+    font-size: 16px;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 300;
+    width: fit-content;
+    transition: color 0.2s;
+  }
+
+  .contacts a:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 720px) {
+    nav { padding: 22px 24px; }
+
+    .container {
+      grid-template-columns: 1fr;
+      padding: 0 28px;
+      gap: 0;
+      align-items: flex-start;
+    }
+
+    .col-left {
+      padding-top: 88px;
+      padding-bottom: 0;
+      gap: 24px;
+    }
+
+    .col-right {
+      padding-top: 40px;
+      padding-bottom: 72px;
+      gap: 24px;
+    }
+
+    .logo-wrap svg { width: min(200px, 52vw); }
+    .headline { font-size: clamp(16px, 4.2vw, 20px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div id="preloader-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.53 3.82">
+      <polygon fill="#d9d3e3" points="8.77 3.78 8.77 .05 8.06 .05 8.06 1.46 7.52 1.46 7.52 .05 6.81 .05 6.81 3.78 7.52 3.78 7.52 2.21 8.06 2.21 8.06 3.78 8.77 3.78"/>
+      <path fill="#d9d3e3" d="M1.27,3.15l.09.63h.66L1.43.05h-.89l-.54,3.73h.59l.09-.63h.59ZM.76,2.53l.11-.78c.05-.37.08-.64.1-.85h.02c.02.23.05.52.1.91l.1.74h-.43,0Z"/>
+      <path fill="#d9d3e3" d="M5.84,1.48h.02c-.01.23-.02.41-.02.91v1.39h.62V.05h-.64l-.57,1.7c-.09.28-.17.53-.21.73h-.02c.02-.21.03-.48.03-.91V.05h-.63v3.73h.72l.51-1.65c.09-.29.14-.48.18-.65Z"/>
+      <path fill="#d9d3e3" d="M10.29,3.15l.09.63h.66L10.45.05h-.89l-.54,3.73h.59l.09-.63h.59ZM9.78,2.53l.11-.78c.05-.37.08-.64.1-.85h.02c.02.23.05.52.1.91l.1.74h-.43,0Z"/>
+      <polygon fill="#d9d3e3" points="3.59 3.78 4.29 3.78 3.26 .05 2.37 .05 2.27 3.78 2.92 3.78 2.95 1.18 3.59 3.78"/>
+      <path fill="#d9d3e3" d="M15.66,3.82h.11c.59,0,.9-.36.9-1.05v-1.74c0-.69-.31-1.04-.91-1.04h-.11c-.61,0-.9.34-.9,1.04v1.74c0,.7.31,1.05.91,1.05ZM15.45,1.05c0-.27.08-.39.27-.39s.27.13.27.39v1.73c0,.25-.09.38-.27.38s-.27-.13-.27-.38v-1.73Z"/>
+      <path fill="#d9d3e3" d="M19.83,3.82h.11c.59,0,.9-.36.9-1.05v-1.74c0-.69-.31-1.04-.91-1.04h-.11c-.61,0-.9.34-.9,1.04v1.74c0,.7.31,1.05.91,1.05ZM19.62,1.05c0-.27.08-.39.27-.39s.27.13.27.39v1.73c0,.25-.09.38-.27.38s-.27-.13-.27-.38v-1.73Z"/>
+      <path fill="#d9d3e3" d="M24.14,3.82h.11c.59,0,.9-.36.9-1.05v-1.74c0-.69-.31-1.04-.91-1.04h-.11c-.61,0-.9.34-.9,1.04v1.74c0,.7.31,1.05.91,1.05ZM23.93,1.05c0-.27.08-.39.27-.39s.27.13.27.39v1.73c0,.25-.09.38-.27.38s-.27-.13-.27-.38v-1.73Z"/>
+      <path fill="#d9d3e3" d="M28.78,3.15l.09.62h.66L28.94.04h-.89l-.54,3.74h.59l.09-.62h.59ZM28.38,1.77c.05-.38.08-.66.1-.88h.02c.02.23.05.52.1.91l.1.74h-.43l.1-.77Z"/>
+      <path fill="#d9d3e3" d="M13.84,1h.02c-.01.41-.02.74-.02,1.24v1.54h.58V.05h-.85l-.22,1.29c-.07.4-.1.64-.13.88v.08l-.02-.11c-.03-.23-.06-.47-.13-.85l-.22-1.29h-.87v3.73h.57v-1.54c0-.52,0-.87-.01-1.24h.02c.04.3.1.63.19,1.14l.29,1.64h.3l.3-1.66c.09-.49.14-.81.19-1.12Z"/>
+      <polygon fill="#d9d3e3" points="18.03 3.78 18.73 3.78 18.68 .05 17.79 .05 16.7 3.78 17.36 3.78 18.12 1.17 18.12 1.25 18.03 3.78"/>
+      <polygon fill="#d9d3e3" points="23.14 3.78 22.48 1.76 22.48 1.75 23.1 .05 22.42 .05 21.84 1.7 21.84 .05 21.16 .05 21.16 3.78 21.84 3.78 21.84 1.97 22.44 3.78 23.14 3.78"/>
+      <path fill="#d9d3e3" d="M27.34,2.43c0-.36-.13-.59-.38-.69h-.03l.03-.02c.1-.04.32-.17.32-.64v-.29c0-.53-.2-.75-.7-.75h-1.14v3.73h1.16c.49,0,.74-.29.74-.85v-.5ZM26.12.6h.24c.19,0,.26.08.26.32v.26c0,.23-.08.34-.26.34h-.25v-.92ZM26.65,2.85c0,.25-.08.34-.27.34h-.26v-1.1h.26c.2,0,.28.1.28.35v.41Z"/>
+    </svg>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <nav>
+    <div class="nav-znak">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2.36 2.2">
+        <polygon fill="#735aed" points="1.94 2.2 2.36 2.2 2.33 0 1.8 0 1.16 2.2 1.55 2.2 2 .66 2 .71 1.94 2.2"/>
+        <polygon fill="#735aed" points=".78 2.2 1.19 2.2 .58 0 .06 0 0 2.2 .39 2.2 .4 .67 .78 2.2"/>
+      </svg>
+    </div>
+    <div class="nav-title">Мультидисциплинарный<br>дизайн</div>
+  </nav>
+
+  <div class="container">
+    <div class="col-left">
+      <div class="logo-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.68 9.18">
+          <polygon fill="#d9d3e3" points="10.35 4.4 10.35 0 9.5 0 9.5 1.67 8.87 1.67 8.87 0 8.03 0 8.03 4.4 8.87 4.4 8.87 2.55 9.5 2.55 9.5 4.4 10.35 4.4"/>
+          <path fill="#d9d3e3" d="M4.34,9.18h.13c.7,0,1.07-.43,1.07-1.23v-2.05c0-.81-.36-1.22-1.07-1.22h-.13c-.72,0-1.07.4-1.07,1.22v2.05c0,.82.36,1.23,1.07,1.23ZM4.09,5.91c0-.32.1-.46.31-.46s.31.15.31.46v2.04c0,.3-.11.45-.31.45s-.31-.15-.31-.45v-2.04Z"/>
+          <path fill="#d9d3e3" d="M9.25,9.18h.13c.7,0,1.07-.43,1.07-1.23v-2.05c0-.81-.36-1.22-1.07-1.22h-.13c-.72,0-1.07.4-1.07,1.22v2.05c0,.82.36,1.23,1.07,1.23ZM9,5.91c0-.32.1-.46.31-.46s.31.15.31.46v2.04c0,.3-.11.45-.31.45s-.31-.15-.31-.45v-2.04Z"/>
+          <path fill="#d9d3e3" d="M14.33,9.18h.13c.7,0,1.07-.43,1.07-1.23v-2.05c0-.81-.36-1.22-1.07-1.22h-.13c-.72,0-1.07.4-1.07,1.22v2.05c0,.82.36,1.23,1.07,1.23ZM14.08,5.91c0-.32.1-.46.31-.46s.31.15.31.46v2.04c0,.3-.11.45-.31.45s-.31-.15-.31-.45v-2.04Z"/>
+          <path fill="#d9d3e3" d="M1.5,3.66l.1.74h.78L1.69,0H.64L0,4.4h.7l.1-.74h.7ZM.9,2.93l.12-.92c.05-.44.09-.76.11-1.01h.02c.02.27.06.61.12,1.07l.12.88h-.5Z"/>
+          <path fill="#d9d3e3" d="M19.81,8.39l.1.74h.78l-.69-4.4h-1.05l-.64,4.4h.7l.1-.74h.7ZM19.33,6.76c.06-.45.1-.78.12-1.03h.02c.02.27.06.61.12,1.07l.12.88h-.5l.12-.91Z"/>
+          <path fill="#d9d3e3" d="M6.88,1.68h.03c-.02.27-.02.48-.02,1.08v1.63h.74V0h-.76l-.67,2c-.11.33-.2.62-.25.87h-.03c.02-.25.03-.57.03-1.08V0h-.74v4.4h.85l.6-1.94c.1-.34.17-.56.21-.77Z"/>
+          <path fill="#d9d3e3" d="M12.13,3.66l.1.74h.78l-.69-4.4h-1.05l-.64,4.4h.7l.1-.74h.7ZM11.53,2.93l.12-.92c.05-.44.09-.76.11-1.01h.02c.02.27.06.61.12,1.07l.12.88h-.5Z"/>
+          <path fill="#d9d3e3" d="M2.19,5.85h.02c-.02.48-.03.87-.03,1.46v1.81h.68v-4.39h-1l-.26,1.52c-.08.48-.12.76-.15,1.03v.09l-.03-.13c-.04-.27-.07-.55-.15-1l-.26-1.52H0v4.39h.67v-1.81c0-.62,0-1.03-.02-1.46h.02c.05.36.11.75.22,1.34l.35,1.93h.36l.36-1.96c.1-.57.17-.95.23-1.32Z"/>
+          <polygon fill="#d9d3e3" points="7.13 9.13 7.95 9.13 7.89 4.73 6.85 4.73 5.57 9.13 6.34 9.13 7.23 6.05 7.23 6.15 7.13 9.13"/>
+          <polygon fill="#d9d3e3" points="4.24 4.4 5.06 4.4 3.84 0 2.8 0 2.68 4.4 3.45 4.4 3.48 1.34 4.24 4.4"/>
+          <polygon fill="#d9d3e3" points="13.16 9.13 12.37 6.75 12.37 6.74 13.1 4.73 12.3 4.73 11.62 6.68 11.62 4.73 10.82 4.73 10.82 9.13 11.62 9.13 11.62 7 12.33 9.13 13.16 9.13"/>
+          <path fill="#d9d3e3" d="M18.11,7.54c0-.43-.15-.69-.45-.81h-.03l.03-.02c.11-.04.38-.2.38-.75v-.34c0-.63-.24-.88-.82-.88h-1.34v4.39h1.36c.57,0,.88-.34.88-1v-.59ZM16.66,5.39h.29c.23,0,.31.1.31.38v.3c0,.28-.09.4-.3.4h-.29v-1.08ZM17.29,8.04c0,.29-.09.4-.32.4h-.31v-1.3h.3c.23,0,.32.12.32.41v.49Z"/>
+        </svg>
+      </div>
+
+      <div class="services">
+        <span>Брендинг</span>
+        <span>Визуальный дизайн</span>
+        <span>UI/UX</span>
+      </div>
+    </div>
+
+    <div class="col-right">
+      <p class="headline">Я с 2009 года помогаю брендам строить коммуникацию с клиентами при помощи дизайна.</p>
+      <p class="bio">Меня зовут Алина. Я проектирую визуальные системы — от айдентики бренда до интерфейсов. Создаю дизайн через призму психологии потребления с акцентом на удобное и понятное взаимодействие с продуктом.</p>
+      <div class="contacts">
+        <a href="mailto:molookovalina@gmail.com">molookovalina@gmail.com</a>
+        <a href="https://t.me/AlinaMlk" target="_blank" rel="noopener">@AlinaMlk</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
